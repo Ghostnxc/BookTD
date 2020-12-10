@@ -9,6 +9,11 @@ class NewVisitorTest(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
+    def check_for_row_in_list_table(self, row_text):
+            table =self.browser.find_element_by_id('id_list_table')
+            rows = table.find_elements_by_tag_name('tr')
+            self.assertIn(row_text, [row.text for row in rows])
+
 
     def test_can_start_a_list_and_retrieve_it_later(self):
         #Edith heard about a cool online to-do app. She goes
@@ -36,12 +41,8 @@ class NewVisitorTest(unittest.TestCase):
         #"1: Buy peacock fethers" as an item in a to-do list
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
-   #     self.check_for_row_in_list_table('1: Buy peacock feathers')
+        self.check_for_row_in_list_table('1: Buy peacock fethers')
 
-    
-
-
-      
         
         #There is still a text box inviting her to add another item. She
         # enters "Use peacock fethers to make a fly" (Edith is very 
