@@ -55,15 +55,8 @@ class NewVisitorTest(unittest.TestCase):
 
 
         #The page updates again, and now shows both items on her list
-
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn('1: Buy peacock feathers',[row.text for row in rows])
-        self.assertTrue(
-            self.assertIn('2: Use peacock feathers to make a fly',
-            [row.text for row in rows])
-            
-        )
+        self.check_for_row_in_list_table('1: Buy peacock feathers')
+        self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
   
         #Edith wonders whether he site will remember her list. Then she sees
         # that the site has a generated a unique URL for her -- there is some
