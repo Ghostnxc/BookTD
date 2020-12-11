@@ -111,6 +111,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy milk')
         inputbox.send_keys(Keys.ENTER)
+        self.wait_for_row_in_table('1: Buy milk')
 
         # Francis get his own unique URL
         francis_list_url = self.browser.current_url
@@ -122,7 +123,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertNotIn('Buy peacock feathers',page_text)
         self.assertIn('Buy milk', page_text)
 
-        #satisfixed, they both go back to sleep
+        #satisfied, they both go back to sleep
 
   
         #Edith wonders whether he site will remember her list. Then she sees
